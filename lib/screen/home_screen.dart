@@ -43,24 +43,24 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _selectedIndex,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'خانه',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.border_color_outlined),
-            label: 'ایزاین',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt_outlined),
-            label: 'AR',
+            icon: Icon(Icons.search),
+            label: 'جستجو',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag_outlined),
             label: 'فروشگاه',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'جستجو',
+            icon: Icon(Icons.camera_alt_outlined),
+            label: 'AR',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.border_color_outlined),
+            label: 'ایزاین',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: 'خانه',
           ),
         ],
       ),
