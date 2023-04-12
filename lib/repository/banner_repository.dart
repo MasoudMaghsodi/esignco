@@ -1,4 +1,4 @@
-
+import 'package:either_dart/either.dart';
 
 import '../data/banner_data.dart';
 import '../di/di.dart';
@@ -16,9 +16,9 @@ class Bannerrepository extends BannerRepository {
   Future<Either<String, List<Banner>>> getBanners() async {
     try {
       var response = await _datasource.getBanners();
-      return right(response);
+      return Right(response.cast<Banner>());
     } on ApiException catch (ex) {
-      return left(ex.message ?? 'خطا محتوای متنی ندارد');
+      return Left(ex.message ?? 'خطا محتوای متنی ندارد');
     }
   }
 }

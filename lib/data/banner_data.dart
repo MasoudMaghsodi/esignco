@@ -13,7 +13,8 @@ class BannerRemoteDatasource extends BannerDatasource {
   @override
   Future<List<Banner>> getBanners() async {
     try {
-      var respones = await _dio.get('collections/banner/records');
+      var respones = await _dio.get(
+          'https://ws.esignco.ir/api/v1/slider/banner?SliderType=slider&LandingPageId=home-landing');
       return respones.data['items']
           .map<Banner>((jsonObject) => Banner.fromJson(jsonObject))
           .toList();

@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:either_dart/either.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../../di/di.dart';
