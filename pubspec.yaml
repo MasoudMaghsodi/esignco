@@ -36,12 +36,11 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
-  flutter_bloc: ^8.1.2
   hexcolor: ^3.0.1
-  equatable: ^2.0.5
-  dio: ^5.1.1
-  get_it: 7.2.0
-  either_dart: ^0.3.0
+  carousel_slider: ^4.2.1
+  video_player: ^2.6.0
+  flutter_localization: ^0.1.10
+
   
 
 dev_dependencies:
@@ -81,6 +80,10 @@ flutter:
   assets:
     - assets/icon/
     - images/logo.png
+    - images/design_carpet.png
+    - images/order_carpet.png
+    - images/search_carpet.png
+    - images/see_carpet.png
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

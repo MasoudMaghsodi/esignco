@@ -1,9 +1,9 @@
 import 'package:esign/constants/colors.dart';
-import 'package:esign/screen/ar_screen.dart';
-import 'package:esign/screen/esign_screen.dart';
-import 'package:esign/screen/home_screen_page.dart';
-import 'package:esign/screen/seach_screen.dart';
-import 'package:esign/screen/shop_screen.dart';
+import 'package:esign/screen/ar/ar_screen.dart';
+import 'package:esign/screen/esign/esign_screen.dart';
+import 'package:esign/screen/home/home_screen_page.dart';
+import 'package:esign/screen/search/search_screen.dart';
+import 'package:esign/screen/shop/shop_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  late final List<Widget> pageList = [
+  final List<Widget> pageList = [
     const HomePage(),
     const EsignPage(),
     const ArShowPage(),
@@ -43,24 +43,24 @@ class _HomeScreenState extends State<HomeScreen> {
         currentIndex: _selectedIndex,
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: 'جستجو',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_bag_outlined),
-            label: 'فروشگاه',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.camera_alt_outlined),
-            label: 'AR',
+            icon: Icon(Icons.home_outlined),
+            label: 'خانه',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.border_color_outlined),
             label: 'ایزاین',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined),
-            label: 'خانه',
+            icon: Icon(Icons.camera_alt_outlined),
+            label: 'AR',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_bag_outlined),
+            label: 'فروشگاه',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.search),
+            label: 'جستجو',
           ),
         ],
       ),
