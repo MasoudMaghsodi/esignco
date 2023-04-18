@@ -9,7 +9,7 @@ var locator = GetIt.instance;
 
 Future<void> getItInit() async {
   locator.registerSingleton<Dio>(
-      Dio(BaseOptions(baseUrl: 'https://front.esignco.ir/')));
+      Dio(BaseOptions(baseUrl: 'https://ws.esignco.ir/')));
 
   locator.registerSingleton<SharedPreferences>(
       await SharedPreferences.getInstance());

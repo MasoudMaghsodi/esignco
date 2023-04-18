@@ -6,7 +6,7 @@ import '../datasource/authenticatin_datasource.dart';
 
 abstract class IAuthRepository {
   Future<Either<String, String>> login(
-    String mobile,
+    String confirmationCode,
   );
 }
 
@@ -14,11 +14,10 @@ class AuthenticationRepository extends IAuthRepository {
   final IAuthenticationDatasource _datasource = locator.get();
 
   @override
-  Future<Either<String, String>> login(String mobile) async {
+  Future<Either<String, String>> login(String confirmationCode) async {
     try {
       String token = await _datasource.login(
-        mobile,
-        //confirmationcode,
+        confirmationCode,
       );
       if (token.isNotEmpty) {
         return right('شما وارد شدید');

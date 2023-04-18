@@ -6,22 +6,18 @@ import '../../di/di.dart';
 import '../../util/api_exception.dart';
 
 abstract class IAuthenticationDatasource {
-  // Future<void> register(String phonenumber);
-
-  Future<String> login(String mobile);
+  Future<int> verify(int confirmationCode);
 }
 
 class AuthenticationRemote implements IAuthenticationDatasource {
   final Dio _dio = locator.get();
-
   @override
-  Future<String> login(String mobile) async {
+  Future<int> verify(int confirmationCode) async {
     try {
       var response = await _dio.post(
-          'https://ws.esignco.ir/api/v1/userManagement/user/login',
+          'https://ws.esignco.ir/api/v1/userManagement/user/verifyUser',
           data: {
-            'mobile': mobile,
-            // 'confirmationcode': confirmationcode,
+            'confirmationCode': confirmationCode,
           });
       if (response.statusCode == 200) {
         return response.data?['token'];
@@ -31,6 +27,6 @@ class AuthenticationRemote implements IAuthenticationDatasource {
     } catch (ex) {
       throw ApiException(0, 'unknown error');
     }
-    return '';
+    return 0;
   }
 }
