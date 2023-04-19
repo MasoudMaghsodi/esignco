@@ -1,8 +1,12 @@
 import 'package:esign/constants/appbar.dart';
 import 'package:esign/constants/colors.dart';
-import 'package:esign/screen/home/home_page_details/category_page_one.dart';
+import 'package:esign/screen/home/home_page_details/category_dahe_fajr.dart';
+import 'package:esign/screen/home/home_page_details/category_new.dart';
+import 'package:esign/screen/home/home_page_details/category_off_season.dart';
 import 'package:esign/screen/home/home_page_details/home_banner.dart';
 import 'package:esign/screen/home/home_page_details/home_grid.dart';
+import 'package:esign/screen/home/home_page_details/information.dart';
+import 'package:esign/screen/home/home_page_details/videoHomePage.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -44,11 +48,11 @@ class HomePage extends StatelessWidget {
               height: 442.397,
               width: 382.897,
             ),
-            Padding(
-              padding: EdgeInsets.only(top: 16.0, left: 12.0, right: 12.0),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 32, horizontal: 12.0),
+              alignment: Alignment.centerRight,
               child: Text(
-                textDirection: TextDirection.rtl,
-                "برترین های دهه فجر",
+                'برترین های دهه فجر',
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: "Iranyekan",
@@ -57,6 +61,69 @@ class HomePage extends StatelessWidget {
               ),
             ),
             CategorySellPageOne(),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 32, horizontal: 12.0),
+              alignment: Alignment.centerRight,
+              child: Text(
+                'ایزاین چیست؟',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: "Iranyekan",
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 370.897,
+              height: 448.155,
+              child: VideoPlayerExample(),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 32, horizontal: 12.0),
+              alignment: Alignment.centerRight,
+              child: Text(
+                'تخفیف فصل',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: "Iranyekan",
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Container(
+              height: 489.15,
+              width: 532,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: Colors.white,
+              ),
+              child: CategoryOffSeason(),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 32, horizontal: 12.0),
+              alignment: Alignment.centerRight,
+              child: Text(
+                'جدید ترین محصولات',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontFamily: "Iranyekan",
+                  fontSize: 16,
+                ),
+              ),
+            ),
+            Container(
+              height: 489.15,
+              width: 532,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15.0),
+                color: Colors.white,
+              ),
+              child: CategoryNew(),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            HomeList()
           ],
         ),
       ),

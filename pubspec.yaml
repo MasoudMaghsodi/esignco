@@ -47,6 +47,7 @@ dependencies:
   get_it: ^7.2.0
   either_dart: ^0.3.0
   shared_preferences: ^2.1.0
+  simple_icons: ^7.10.0
 
   
 
@@ -91,7 +92,9 @@ flutter:
     - images/order_carpet.png
     - images/search_carpet.png
     - images/see_carpet.png
-
+    - images/default-profile.png
+    - images/color-logo.png
+    - images/enter-code.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -104,11 +107,11 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: Iranyekan
+      fonts:
+        - asset: fonts\Qs_Iranyekan black.ttf
+        - asset: fonts\Qs_Iranyekan medium.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

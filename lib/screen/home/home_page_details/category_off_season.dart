@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 
-class CategorySellPageOne extends StatefulWidget {
-  const CategorySellPageOne({Key? key}) : super(key: key);
+class CategoryOffSeason extends StatefulWidget {
+  const CategoryOffSeason({Key? key}) : super(key: key);
 
   @override
-  State<CategorySellPageOne> createState() => _CategorySellPageOneState();
+  State<CategoryOffSeason> createState() => _CategoryOffSeasonState();
 }
 
-class _CategorySellPageOneState extends State<CategorySellPageOne> {
+class _CategoryOffSeasonState extends State<CategoryOffSeason> {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: getPicsPageOne(),
+      future: getOffSeason(),
       builder: (context, snapshot) {
         Map? data = snapshot.data;
         if (snapshot.hasError) {
@@ -31,7 +31,7 @@ class _CategorySellPageOneState extends State<CategorySellPageOne> {
               viewportFraction: 0.9,
               enableInfiniteScroll: false,
             ),
-            itemCount: data!['data']['products'].length,
+            itemCount: data!['data']['products'][0]['images'].length,
             itemBuilder: (context, index, realIndex) {
               return Column(
                 children: [
@@ -42,7 +42,7 @@ class _CategorySellPageOneState extends State<CategorySellPageOne> {
                       width: MediaQuery.of(context).size.width,
                       margin: EdgeInsets.symmetric(horizontal: 4.0),
                       child: Image.network(
-                        '${data['data']['products'][index]['images'][0]['thumbnailUrl']}',
+                        '${data['data']['products'][0]['images'][index]['thumbnailUrl']}',
                         fit: BoxFit.fitHeight,
                       ),
                     ),

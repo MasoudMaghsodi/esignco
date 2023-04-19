@@ -1,4 +1,6 @@
 import 'package:esign/screen/home/home_screen_page.dart';
+import 'package:esign/screen/profile/login.dart';
+import 'package:esign/screen/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'colors.dart';
 
@@ -38,30 +40,23 @@ class Appbar extends StatelessWidget {
                   Row(
                     children: [
                       IconButton(
-                        onPressed: () => null,
-                        // currentRoute == Account()
-                        //     ? null
-                        //     : () => Navigator.push(
-                        //           context,
-                        //           MaterialPageRoute(
-                        //             builder: (context) => Account(),
-                        //           ),
-                        //         ),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => HomePage()),
+                          );
+
+                          Navigator.of(
+                            context,
+                            rootNavigator: true,
+                          ).pop(
+                            context,
+                          );
+                        },
                         icon: Icon(
-                          Icons.person_outlined,
+                          Icons.arrow_back,
                           color: Colors.white,
                         ),
-                      ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.shopping_cart_outlined,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: SizedBox.shrink(),
                       ),
                       IconButton(
                         onPressed: () {
@@ -78,22 +73,28 @@ class Appbar extends StatelessWidget {
                         },
                         icon: Image.asset("images/logo.png"),
                       ),
+                      Expanded(
+                        flex: 1,
+                        child: SizedBox.shrink(),
+                      ),
                       IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => HomePage()),
-                          );
-
-                          Navigator.of(
-                            context,
-                            rootNavigator: true,
-                          ).pop(
-                            context,
-                          );
-                        },
+                        onPressed: () {},
                         icon: Icon(
-                          Icons.arrow_forward,
+                          Icons.shopping_cart_outlined,
+                          color: Colors.white,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: currentRoute == Account()
+                            ? null
+                            : () => Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => LoginPage(),
+                                  ),
+                                ),
+                        icon: Icon(
+                          Icons.person_outlined,
                           color: Colors.white,
                         ),
                       ),
