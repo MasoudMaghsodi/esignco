@@ -1,13 +1,9 @@
-import 'dart:ffi';
-
 import 'package:dio/dio.dart';
 
 import '../../di/di.dart';
 import '../../util/api_exception.dart';
 
 abstract class IAuthenticationDatasource {
-  // Future<void> register(String phonenumber);
-
   Future<String> login(String mobile);
 }
 
@@ -21,7 +17,6 @@ class AuthenticationRemote implements IAuthenticationDatasource {
           'https://ws.esignco.ir/api/v1/userManagement/user/login',
           data: {
             'mobile': mobile,
-            // 'confirmationcode': confirmationcode,
           });
       if (response.statusCode == 200) {
         return response.data?['token'];
