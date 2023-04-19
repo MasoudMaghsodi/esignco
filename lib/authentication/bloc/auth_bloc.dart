@@ -19,3 +19,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     }));
   }
 }
+
+// class VerifyBloc extends Bloc<AuthEvent, AuthState> {
+//   final IAuthRepository _repository = locator.get();
+//   VerifyBloc() : super(AuthInitiateState()) {
+//     on<AuthVerifyRequest>(((event, emit) async {
+//       emit(AuthLodingState());
+//       var response = await _repository.login(
+//         event.confirmationCode
+//       );
+//       emit(AuthResponseState(response));
+//     }));
+//   }
+// }

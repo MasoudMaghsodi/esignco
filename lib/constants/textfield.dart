@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class TextFieldWidget extends StatefulWidget {
-  final String? phonenumber;
-  const TextFieldWidget({
-    Key? key,
-    this.phonenumber,
-  }) : super(key: key);
+  // final String? phonenumber;
+  // const TextFieldWidget({
+  //   Key? key,
+  //   this.phonenumber,
+  // }) : super(key: key);
 
   @override
   State<TextFieldWidget> createState() => _TextFieldWidgetState();
@@ -20,6 +20,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
   bool hasError = false;
   String currentText = "";
   final formKey = GlobalKey<FormState>();
+  final TextEditingController verifycontroller = TextEditingController();
 
   @override
   void initState() {
@@ -48,10 +49,10 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0),
         child: PinCodeTextField(
+          controller: verifycontroller,
           keyboardType: TextInputType.number,
           length: 5,
           appContext: context,
-          controller: textEditingController,
           pastedTextStyle: TextStyle(
             fontWeight: FontWeight.bold,
           ),

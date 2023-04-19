@@ -8,7 +8,9 @@ class AuthLoginRequest extends AuthEvent {
   AuthLoginRequest(this.mobile);
 }
 
-class AuthVerifyRequest extends AuthEvent {
+abstract class VerifyEvent {}
+
+class AuthVerifyRequest extends VerifyEvent {
   String confirmationCode;
 
   AuthVerifyRequest(this.confirmationCode);

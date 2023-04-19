@@ -1,4 +1,5 @@
 import 'package:esign/screen/home/home_screen.dart';
+import 'package:esign/screen/profile/verify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'di/di.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: [Locale("fa", "IR")],
       locale: Locale("fa", "IR"),
       debugShowCheckedModeBanner: false,
-      home: const HomeScreen(),
+      home: HomeScreen(),
       // routes: {
       //   '/home': (context) => HomeScreen(),
       // },

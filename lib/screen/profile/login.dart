@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: [
-        Locale("fa", "IR"), // OR Locale('ar', 'AE') OR Other RTL locales
+        Locale("fa", "IR"),
       ],
       locale: Locale("fa", "IR"),
       home: BlocProvider(
@@ -116,11 +116,11 @@ class _LoginPageState extends State<LoginPage> {
                             MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
                             if (_isButtonDisabled) {
-                              return Colors
-                                  .grey; // Return your disabled button color here
+                              return Colors.purpleAccent;
+                              // Return your disabled button color here
                             } else {
-                              return Colors
-                                  .purple; // Return your enabled button color here
+                              return Colors.purple;
+                              // Return your enabled button color here
                             }
                           },
                         ),
@@ -135,7 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                 if (state is AuthResponseState) {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const Verify()),
+                    MaterialPageRoute(builder: (context) => Verify()),
                   );
                 }
                 return Text('خطای نا مشخص !');
