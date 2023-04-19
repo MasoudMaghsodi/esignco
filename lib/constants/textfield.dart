@@ -51,7 +51,7 @@ class _TextFieldWidgetState extends State<TextFieldWidget> {
           keyboardType: TextInputType.number,
           length: 5,
           appContext: context,
-          controller: ,
+          controller: textEditingController,
           pastedTextStyle: TextStyle(
             fontWeight: FontWeight.bold,
           ),

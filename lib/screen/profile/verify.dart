@@ -52,8 +52,8 @@ class Verify extends StatelessWidget {
                   height: 40.0,
                   child: ElevatedButton(
                     onPressed: () {
-                      BlocProvider.of<AuthBloc>(context)
-                          .add(AuthVerifyRequest());
+                      // BlocProvider.of<AuthBloc>(context)
+                      //     .add(AuthVerifyRequest());
                       // final snackBar = SnackBar(
                       //   backgroundColor: bgerror,
                       //   content: Align(

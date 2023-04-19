@@ -14,15 +14,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //final _mobile_controller = TextEditingController();
-  late TextEditingController _mobile_controller;
+  final _mobile_controller = TextEditingController();
   bool _isButtonDisabled = true;
 
-  void initState() {
-    super.initState();
-    _mobile_controller = TextEditingController();
-    _mobile_controller.addListener(() {
-      final _isButtonDisabled = _mobile_controller.text.length.clamp(0, 11);
+  void _toggleButtonState() {
+    setState(() {
+      _isButtonDisabled = _mobile_controller.text.length != 11;
     });
   }
 
@@ -90,8 +87,10 @@ class _LoginPageState extends State<LoginPage> {
                 child: Directionality(
                   textDirection: TextDirection.rtl,
                   child: TextField(
-                    key: Key('mobile-field'),
+                    onChanged: (_) => _toggleButtonState(),
                     controller: _mobile_controller,
+                    maxLength: 11,
+                    keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       border: OutlineInputBorder(),
                       labelText: 'شماره موبایل',
@@ -109,19 +108,23 @@ class _LoginPageState extends State<LoginPage> {
                     height: 40.0,
                     child: ElevatedButton(
                       onPressed: _isButtonDisabled
-                          ? () {
-                              setState(() => _isButtonDisabled = false);
-                              BlocProvider.of<AuthBloc>(context).add(
-                                  AuthLoginRequest(_mobile_controller.text));
+                          ? null
+                          : () => BlocProvider.of<AuthBloc>(context)
+                              .add(AuthLoginRequest(_mobile_controller.text)),
+                      style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.resolveWith<Color>(
+                          (Set<MaterialState> states) {
+                            if (_isButtonDisabled) {
+                              return Colors
+                                  .grey; // Return your disabled button color here
+                            } else {
+                              return Colors
+                                  .purple; // Return your enabled button color here
                             }
-                          : ,
-                      style: ElevatedButton.styleFrom(
-                       
-                          backgroundColor: purple,
-                          //disabledBackgroundColor: disabledBackground,
-                          disabledForegroundColor: Colors.white),
-                          statesController: MaterialStatesController(MaterialColor(Colors.purple, Colors.purpleAccent)),
-                          
+                          },
+                        ),
+                      ),
                       child: Text("مرحله بعد"),
                     ),
                   );
