@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
+import 'package:equatable/equatable.dart';
 import 'package:esign/data/repository/authentication_repository.dart';
 import 'package:esign/di/di.dart';
 
@@ -32,3 +33,5 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 //     }));
 //   }
 // }
+
+

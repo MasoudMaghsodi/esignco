@@ -1,5 +1,7 @@
-import 'package:dio/dio.dart';
+import 'dart:convert';
 
+import 'package:dio/dio.dart';
+import 'package:http/http.dart' as http;
 import '../../di/di.dart';
 import '../../util/api_exception.dart';
 
@@ -19,7 +21,7 @@ class AuthenticationRemote implements IAuthenticationDatasource {
             'mobile': mobile,
           });
       if (response.statusCode == 200) {
-        return response.data?['token'];
+        return response.data?['confirmationToken'];
       }
     } on DioError catch (ex) {
       throw ApiException(ex.response?.statusCode, ex.response?.data['message']);
@@ -28,4 +30,10 @@ class AuthenticationRemote implements IAuthenticationDatasource {
     }
     return '';
   }
+}
+
+Future<String> token() async {
+  String url = 'https://ws.esignco.ir/api/v1/userManagement/user/login';
+  http.Response token = await http.get(Uri.parse(url));
+  return json.decode(token.body);
 }
