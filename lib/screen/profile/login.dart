@@ -116,10 +116,10 @@ class _LoginPageState extends State<LoginPage> {
                             MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
                             if (_isButtonDisabled) {
-                              return Colors.purpleAccent;
+                              return disabledBackground;
                               // Return your disabled button color here
                             } else {
-                              return Colors.purple;
+                              return purple;
                               // Return your enabled button color here
                             }
                           },

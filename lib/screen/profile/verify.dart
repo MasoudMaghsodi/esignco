@@ -6,16 +6,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Verify extends StatelessWidget {
-  final TextEditingController verifycontroller;
-  Verify({TextEditingController? verifycontroller})
-      : verifycontroller = verifycontroller ?? TextEditingController();
+  // final TextEditingController verifycontroller;
+  // Verify({TextEditingController? verifycontroller})
+  //     : verifycontroller = verifycontroller ?? TextEditingController();
+  final TextEditingController verifycontroller = TextEditingController();
+  final token = '';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: BlocProvider(
-          create: (context) => AuthBloc(),
+          create: (context) => VerifyBloc(),
           child: SafeArea(
             child: Scaffold(
               backgroundColor: background,
@@ -49,19 +51,24 @@ class Verify extends StatelessWidget {
                   SizedBox(
                     height: 20.0,
                   ),
-                  TextFieldWidget(),
+                  TextField(
+                    controller: verifycontroller,
+                  ),
+                  // TextFieldWidget(),
                   SizedBox(
                     height: 20.0,
                   ),
-                  BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
-                    if (state is AuthInitiateState) {
+                  BlocBuilder<VerifyBloc, VerifyState>(
+                      builder: (context, state) {
+                    if (state is VerifyInitiateState) {
                       return Container(
                         width: 300.0,
                         height: 40.0,
                         child: ElevatedButton(
                           onPressed: () {
-                            BlocProvider.of<AuthBloc>(context)
-                                .add(AuthLoginRequest(verifycontroller.text));
+                            BlocProvider.of<VerifyBloc>(context).add(
+                                AuthVerifyRequest(
+                                    verifycontroller.text, token));
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: purple,
@@ -71,10 +78,10 @@ class Verify extends StatelessWidget {
                       );
                     }
 
-                    if (state is AuthLodingState) {
+                    if (state is VerifyLodingState) {
                       return CircularProgressIndicator();
                     }
-                    if (state is AuthResponseState) {
+                    if (state is VerifyResponseState) {
                       Navigator.push(
                         context,
                         MaterialPageRoute(

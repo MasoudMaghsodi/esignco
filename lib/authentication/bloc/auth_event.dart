@@ -12,6 +12,9 @@ abstract class VerifyEvent {}
 
 class AuthVerifyRequest extends VerifyEvent {
   String confirmationCode;
-
-  AuthVerifyRequest(this.confirmationCode);
+  String confirmationToken;
+  AuthVerifyRequest(
+    this.confirmationCode,
+    this.confirmationToken,
+  );
 }
