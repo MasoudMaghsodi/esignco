@@ -1,16 +1,17 @@
+import 'package:dio/dio.dart';
 import 'package:esign/authentication/bloc/auth_bloc.dart';
 import 'package:esign/constants/colors.dart';
 import 'package:esign/constants/textfield.dart';
 import 'package:esign/screen/profile/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Verify extends StatelessWidget {
   // final TextEditingController verifycontroller;
   // Verify({TextEditingController? verifycontroller})
   //     : verifycontroller = verifycontroller ?? TextEditingController();
   final TextEditingController verifycontroller = TextEditingController();
-  final token = '';
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class Verify extends StatelessWidget {
               body: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset("images/enter-code.png"),
+                  SvgPicture.asset("images/enter-code.svg"),
                   SizedBox(
                     height: 20.0,
                   ),
@@ -66,9 +67,8 @@ class Verify extends StatelessWidget {
                         height: 40.0,
                         child: ElevatedButton(
                           onPressed: () {
-                            BlocProvider.of<VerifyBloc>(context).add(
-                                AuthVerifyRequest(
-                                    verifycontroller.text, token));
+                            BlocProvider.of<VerifyBloc>(context)
+                                .add(AuthVerifyRequest(verifycontroller.text));
                           },
                           style: ElevatedButton.styleFrom(
                               backgroundColor: purple,

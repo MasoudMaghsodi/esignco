@@ -1,19 +1,15 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import '../../di/di.dart';
 import '../../util/api_exception.dart';
 
 abstract class IAuthenticationDatasource {
   Future<String> login(String mobile);
-  Future<String> verify(String confirmationCode, String confirmationToken);
+  Future<String> verify(String confirmationCode);
 }
 
 class AuthenticationRemote implements IAuthenticationDatasource {
   final Dio _dio = locator.get();
-  var token;
+  String token = '';
 
   @override
   Future<String> login(String mobile) async {
@@ -24,8 +20,8 @@ class AuthenticationRemote implements IAuthenticationDatasource {
             'mobile': mobile,
           });
       if (response.statusCode == 200) {
-        token = response.data?['confirmationToken'];
-        return token;
+        return response.data?['confirmationToken'];
+        //return token;
       }
     } on DioError catch (ex) {
       throw ApiException(ex.response?.statusCode, ex.response?.data['message']);
@@ -36,14 +32,16 @@ class AuthenticationRemote implements IAuthenticationDatasource {
   }
 
   @override
-  Future<String> verify(
-      String confirmationCode, String confirmationToken) async {
+  Future<String> verify(String confirmationCode) async {
     try {
+      // if (token == null) {
+      //   throw ApiException(0, 'Token not initialized');
+      // }
       var response = await _dio.post(
           'https://ws.esignco.ir/api/v1/userManagement/user/verifyUser',
           data: {
             'confirmationCode': confirmationCode,
-            'confirmationToken': token,
+            //'confirmationToken': token,
           });
       if (response.statusCode == 200) {
         return response.data?['token'];
@@ -56,9 +54,3 @@ class AuthenticationRemote implements IAuthenticationDatasource {
     return '';
   }
 }
-
-// Future<String> token() async {
-//   String url = 'https://ws.esignco.ir/api/v1/userManagement/user/login';
-//   http.Response token = await http.get(Uri.parse(url));
-//   return json.decode(token.body);
-// }

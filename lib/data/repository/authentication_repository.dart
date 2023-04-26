@@ -5,11 +5,8 @@ import '../../util/api_exception.dart';
 import '../datasource/authenticatin_datasource.dart';
 
 abstract class IAuthRepository {
-  Future<Either<String, String>> login(
-    String mobile,
-  );
-  Future<Either<String, String>> verify(
-      String confirmationCode, String confirmationToken);
+  Future<Either<String, String>> login(String mobile);
+  Future<Either<String, String>> verify(String confirmationCode);
 }
 
 class AuthenticationRepository extends IAuthRepository {
@@ -20,7 +17,6 @@ class AuthenticationRepository extends IAuthRepository {
     try {
       String token = await _datasource.login(
         mobile,
-        //confirmationcode,
       );
       if (token.isNotEmpty) {
         return right('شما وارد شدید');
@@ -33,12 +29,10 @@ class AuthenticationRepository extends IAuthRepository {
   }
 
   @override
-  Future<Either<String, String>> verify(
-      String confirmationCode, String confirmationToken) async {
+  Future<Either<String, String>> verify(String confirmationCode) async {
     try {
       String token = await _datasource.verify(
         confirmationCode,
-        confirmationToken,
       );
       if (token.isNotEmpty) {
         return right('شما وارد شدید');

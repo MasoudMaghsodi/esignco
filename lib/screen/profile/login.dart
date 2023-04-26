@@ -4,10 +4,11 @@ import 'package:esign/screen/profile/verify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class LoginPage extends StatefulWidget {
   LoginPage({Key? key}) : super(key: key);
-  static const String _logoImagePath = "images/color-logo.png";
+  static const String _logoImagePath = "images/color-logo.svg";
 
   @override
   State<LoginPage> createState() => _LoginPageState();
@@ -67,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                 child: Container(
                   height: 150.0,
                   width: 150.0,
-                  child: Image.asset(LoginPage._logoImagePath),
+                  child: SvgPicture.asset(LoginPage._logoImagePath),
                 ),
               ),
               SizedBox(

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:dartz/dartz.dart';
-import 'package:equatable/equatable.dart';
+import 'package:dio/dio.dart';
 import 'package:esign/data/repository/authentication_repository.dart';
 import 'package:esign/di/di.dart';
 
@@ -14,7 +14,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthLodingState());
       var response = await _repository.login(
         event.mobile,
-        //event.confirmationcode
       );
       emit(AuthResponseState(response));
     }));
@@ -28,9 +27,25 @@ class VerifyBloc extends Bloc<VerifyEvent, VerifyState> {
       emit(VerifyLodingState());
       var response = await _repository.verify(
         event.confirmationCode,
-        event.confirmationToken,
       );
       emit(VerifyResponseState(response));
     }));
   }
 }
+
+// class VerifyBloc extends Bloc<VerifyEvent, VerifyState> {
+//   final Dio _dio;
+//   VerifyBloc(super.initialState, {Dio? dio}) : _dio = dio ?? Dio();
+//   @override
+//   Stream<VerifyState> mapEventToState(VerifyEvent event) async* {
+//     if (event is VerifyInitiateState) {
+//       try {
+//         Response response = await _dio
+//             .get('https://ws.esignco.ir/api/v1/userManagement/user/login');
+//         yield VerifyResponseState(response.data);
+//       } catch (e) {
+//         yield VerifyLodingState();
+//       }
+//     }
+//   }
+// }

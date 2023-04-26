@@ -50,6 +50,7 @@ dependencies:
   simple_icons: ^7.10.0
   pin_code_fields: ^7.4.0
   otp_text_field: ^1.1.3
+  flutter_svg: ^2.0.5
 
   
 
@@ -89,14 +90,14 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/icon/
-    - images/logo.png
-    - images/design_carpet.png
-    - images/order_carpet.png
-    - images/search_carpet.png
-    - images/see_carpet.png
-    - images/default-profile.png
-    - images/color-logo.png
-    - images/enter-code.png
+    - images/logo.svg
+    - images/design_carpet.svg
+    - images/order_carpet.svg
+    - images/search_carpet.svg
+    - images/see_carpet.svg
+    - images/default-profile.svg
+    - images/color-logo.svg
+    - images/enter-code.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

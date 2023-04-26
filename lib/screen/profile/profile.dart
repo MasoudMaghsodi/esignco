@@ -96,7 +96,7 @@ class Account extends StatelessWidget {
                     width: 90.0,
                     child: CircleAvatar(
                       backgroundImage: AssetImage(
-                        "images/default-profile.png",
+                        "images/default-profile.svg",
                       ),
                     ),
                   ),

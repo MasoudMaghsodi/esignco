@@ -2,6 +2,7 @@ import 'package:esign/screen/home/home_screen_page.dart';
 import 'package:esign/screen/profile/login.dart';
 import 'package:esign/screen/profile/profile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'colors.dart';
 
 class Appbar extends StatelessWidget {
@@ -71,7 +72,7 @@ class Appbar extends StatelessWidget {
                             context,
                           );
                         },
-                        icon: Image.asset("images/logo.png"),
+                        icon: SvgPicture.asset("images/logo.svg"),
                       ),
                       Expanded(
                         flex: 1,
