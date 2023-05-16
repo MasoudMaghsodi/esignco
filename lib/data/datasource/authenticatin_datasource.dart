@@ -20,7 +20,7 @@ class AuthenticationRemote implements IAuthenticationDatasource {
             'mobile': mobile,
           });
       if (response.statusCode == 200) {
-        return response.data?['confirmationToken'];
+        return response.data?['token'];
         //return token;
       }
     } on DioError catch (ex) {
@@ -34,17 +34,15 @@ class AuthenticationRemote implements IAuthenticationDatasource {
   @override
   Future<String> verify(String confirmationCode) async {
     try {
-      // if (token == null) {
-      //   throw ApiException(0, 'Token not initialized');
-      // }
       var response = await _dio.post(
-          'https://ws.esignco.ir/api/v1/userManagement/user/verifyUser',
-          data: {
-            'confirmationCode': confirmationCode,
-            //'confirmationToken': token,
-          });
+        'https://ws.esignco.ir/api/v1/userManagement/user/verifyUser',
+        data: {
+          'confirmationCode': confirmationCode,
+          //'confirmationToken': token,
+        },
+      );
       if (response.statusCode == 200) {
-        return response.data?['token'];
+        return response.data?['confirmationToken'];
       }
     } on DioError catch (ex) {
       throw ApiException(ex.response?.statusCode, ex.response?.data['message']);

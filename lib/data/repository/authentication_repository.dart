@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:esign/di/auth.dart';
 
 import '../../di/di.dart';
 import '../../util/api_exception.dart';
@@ -35,6 +36,7 @@ class AuthenticationRepository extends IAuthRepository {
         confirmationCode,
       );
       if (token.isNotEmpty) {
+        AuthManager.saveToken(token);
         return right('شما وارد شدید');
       } else {
         return left('خطایی در ورود پیش امده');
